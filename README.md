@@ -22,14 +22,14 @@ Trained agents on Hugging Face: [multi-floor-maze-rl](https://huggingface.co/Tic
 |---|---|
 | KEY, DOOR | The door on each floor opens only if the agent holds the key |
 | STAIRS, GOAL | Stairs go up one floor; the goal is on the last floor |
-| MONSTER | One per floor. Chases the agent when within Manhattan distance 3 (misses a step 35% of the time), otherwise wanders |
+| MONSTER | One per floor. Chases the agent when within Manhattan distance 3 (misses a step 35% of the time), otherwise wanders. A hit costs 1 HP and sends the agent back to the floor entry |
 | BOMB, HOLE | Cost 1 HP. A hole also sends the agent back to the floor entry |
-| SHIELD | Blocks one hit and stuns the monster for 2 steps |
+| SHIELD | Blocks one hit from a monster, bomb or hole. Blocking a monster also stuns it for 2 steps. Lost when the agent goes up a floor |
 | HAMMER | Hits the next cell: stuns a monster, breaks a soft wall or removes a bomb. 3 step cooldown |
 | SOFT_WALL | A wall the hammer can break |
 | BLOOD | Restores 1 HP (max 3) |
 
-Bombs and health also appear during an episode, every 5 to 7 steps, away from the agent. An episode ends on the goal, on death (HP 0), after 250 steps, or after 95 steps without reaching a new milestone (key, door, stairs or goal).
+Bombs and health also appear during an episode, every 5 to 7 steps, away from the agent. An episode ends on the goal, on death (HP 0), at the step limit (250 by default), or after 38% of the step limit (95 steps at 250) without reaching a new milestone (key, door, stairs or goal).
 
 ![The 3 vertical and 3 horizontal wall patterns used to build a floor](assets/floor_patterns.png)
 
@@ -110,7 +110,7 @@ Python, NumPy, PyTorch, Matplotlib, Apache Zeppelin (with an AngularJS game UI),
 └── Nhom08_MultiFloorMaze_BaoCao.docx
 ```
 
-The files in `src/` are copied cell by cell from the Zeppelin note without changes. Some helpers call Zeppelin's `z` object for the game UI, so they are meant for reading; run the notebook to use them.
+The files in `src/` are copied cell by cell from the Zeppelin note; only the `%pyspark` line at the top of each cell is removed. Some helpers call Zeppelin's `z` object for the game UI, so they are meant for reading; run the notebook to use them.
 
 ## Run it
 

@@ -1,6 +1,7 @@
 """Double DQN (PyTorch): state processor, replay buffer, multi-branch MLP, the agent, train/evaluate helpers, training setup and the evaluation run.
 
-Copied cell by cell, without changes, from the Zeppelin note Nhom08_MultiFloorMaze_Code.json so the code can be read on GitHub.
+Copied cell by cell from the Zeppelin note notebooks/MultiFloorMaze_Zeppelin.json so the code can be read on GitHub.
+Only the "%pyspark" line at the top of each cell is removed.
 Some helpers call Zeppelin's z object for the game UI, so run the code in the notebook (or the Colab notebook for Double DQN).
 """
 

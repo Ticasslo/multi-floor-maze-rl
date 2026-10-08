@@ -1,0 +1,16 @@
+# Trained models (on Hugging Face, see README)
+FinalModel/
+*.pkl
+*.pt
+
+# Office lock files
+~$*
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
